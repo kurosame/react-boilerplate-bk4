@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const Html = require('html-webpack-plugin')
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: {
     bundle: './src/index.jsx'
   },
@@ -46,5 +46,5 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: { '@': path.resolve(__dirname, 'src') }
   },
-  devtool: '#inline-source-map'
-}
+  devtool: argv.mode === 'development' ? '#inline-source-map' : false
+})

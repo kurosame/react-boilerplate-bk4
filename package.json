@@ -3,7 +3,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "clean": "rimraf ./dist/**/*"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
