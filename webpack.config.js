@@ -3,11 +3,11 @@ const Html = require('html-webpack-plugin')
 
 module.exports = (env, argv) => ({
   entry: {
-    bundle: path.resolve(__dirname, 'src/index.tsx')
+    bundle: path.join(__dirname, 'src', 'index.tsx')
   },
   output: {
     filename: '[name]-[hash].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist'),
     publicPath: '/'
   },
   devServer: {
@@ -35,12 +35,12 @@ module.exports = (env, argv) => ({
   },
   plugins: [
     new Html({
-      template: path.resolve(__dirname, 'src/index.html')
+      template: path.join(__dirname, 'src', 'index.html')
     })
   ],
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
-    alias: { '@': path.resolve(__dirname, 'src') }
+    alias: { '@': path.join(__dirname, 'src') }
   },
   devtool: argv.mode === 'development' ? '#inline-source-map' : false
 })
