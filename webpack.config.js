@@ -1,10 +1,9 @@
 const path = require('path')
-const webpack = require('webpack')
 const Html = require('html-webpack-plugin')
 
 module.exports = (env, argv) => ({
   entry: {
-    bundle: './src/index.jsx'
+    bundle: path.resolve(__dirname, 'src/index.tsx')
   },
   output: {
     filename: '[name]-[hash].js',
@@ -23,27 +22,24 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
-        test: /\.jsx$/,
-        use: [
-          {
-            loader: 'babel-loader?cacheDirectory'
+        test: /\.tsx$/,
+        use: {
+          loader: 'awesome-typescript-loader',
+          options: {
+            useBabel: true
           }
-        ],
+        },
         exclude: /node_modules/
       }
     ]
   },
   plugins: [
     new Html({
-      filename: 'index.html',
-      template: './src/index.html'
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      template: path.resolve(__dirname, 'src/index.html')
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.ts', '.tsx'],
     alias: { '@': path.resolve(__dirname, 'src') }
   },
   devtool: argv.mode === 'development' ? '#inline-source-map' : false
