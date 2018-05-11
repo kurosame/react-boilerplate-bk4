@@ -1,4 +1,7 @@
 const path = require('path')
+const Copy = require('copy-webpack-plugin')
+const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
+const HardSource = require('hard-source-webpack-plugin')
 const Html = require('html-webpack-plugin')
 
 module.exports = (env, argv) => ({
@@ -26,7 +29,8 @@ module.exports = (env, argv) => ({
         use: {
           loader: 'awesome-typescript-loader',
           options: {
-            useBabel: true
+            useBabel: true,
+            transpileOnly: true
           }
         },
         exclude: /node_modules/
@@ -34,6 +38,9 @@ module.exports = (env, argv) => ({
     ]
   },
   plugins: [
+    new Copy([{ from: 'assets', to: 'assets' }]),
+    new ForkTsChecker(),
+    new HardSource(),
     new Html({
       template: path.join(__dirname, 'src', 'index.html')
     })
