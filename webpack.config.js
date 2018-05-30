@@ -38,7 +38,13 @@ module.exports = (env, argv) => ({
     ]
   },
   plugins: [
-    new Copy([{ from: 'assets', to: 'assets' }]),
+    new Copy([
+      {
+        from: path.join(__dirname, 'assets'),
+        to: path.join(__dirname, 'dist', 'assets'),
+        ignore: '.gitkeep'
+      }
+    ]),
     new ForkTsChecker(),
     new HardSource(),
     new Html({
