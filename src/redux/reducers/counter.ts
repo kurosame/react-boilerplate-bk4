@@ -1,4 +1,4 @@
-import { handleActions, Action } from 'redux-actions'
+import { handleActions, Action, Reducer } from 'redux-actions'
 import { State } from '@/redux/state/counter'
 import { ADD_VALUE, AXIOS_SAMPLE, ASYNC_AWAIT_SAMPLE } from '@/redux/types'
 
@@ -8,7 +8,7 @@ const initialState: State = {
   asyncAwaitCount: 0
 }
 
-export const counter = handleActions<State>(
+export const counter: Reducer<State, State> = handleActions(
   {
     [ADD_VALUE]: (state: State, action: Action<State>): State => {
       return {

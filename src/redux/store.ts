@@ -11,6 +11,6 @@ const middlewares: Middleware[] = []
 if (process.env.NODE_ENV !== 'production') middlewares.push(logger)
 
 export default createStore(
-  combineReducers({ counter }),
+  combineReducers<any>({ counter }),
   applyMiddleware(...middlewares)
 )
