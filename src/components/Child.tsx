@@ -1,17 +1,25 @@
 import React from 'react'
 import { State } from '@/redux/state/counter'
+import { Actions } from '@/redux/actions/counter'
 
 interface Props {
   state: State
+  actions: Actions
 }
 
 export class Child extends React.Component<Props> {
   render() {
     return (
       <div>
-        Welcome to my site !
-        <p>score: {this.props.state.count}</p>
-        aaaaaaaa
+        <div>
+          <span className="count">{this.props.state.count}</span>
+          <button
+            className="add-value"
+            onClick={() => this.props.actions.addValue()}
+          >
+            ADD
+          </button>
+        </div>
       </div>
     )
   }
