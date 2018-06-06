@@ -1,6 +1,7 @@
 import React from 'react'
 import { State } from '@/redux/state/counter'
 import { Actions } from '@/redux/actions/counter'
+import styled from 'styled-components'
 
 interface Props {
   state: State
@@ -10,7 +11,7 @@ interface Props {
 export class Child extends React.Component<Props> {
   render() {
     return (
-      <div>
+      <Div>
         <div>
           <span className="count">{this.props.state.count}</span>
           <button
@@ -20,7 +21,13 @@ export class Child extends React.Component<Props> {
             ADD
           </button>
         </div>
-      </div>
+      </Div>
     )
   }
 }
+
+const Div = styled.div`
+  color: white;
+  background-color: blue;
+  letter-spacing: 5px;
+`
