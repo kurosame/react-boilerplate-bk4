@@ -1,13 +1,9 @@
 import { createActions, ActionFunctionAny, Action } from 'redux-actions'
-import { ADD_VALUE } from '@/redux/types'
-import { State } from '@/redux/state/counter'
+import { ADD_VALUE, SAGA_SAMPLE } from '@/redux/types'
 
 export type Actions = {
-  addValue: ActionFunctionAny<Action<{ count: number }>>
+  addValue: ActionFunctionAny<Action<{}>>
+  sagaSample: ActionFunctionAny<Action<{ sagaCount: number }>>
 }
 
-export const { addValue } = createActions({
-  [ADD_VALUE]: (): { count: number } => {
-    return { count: 1 }
-  }
-})
+export const { addValue, sagaSample } = createActions(ADD_VALUE, SAGA_SAMPLE)

@@ -21,6 +21,16 @@ export class Child extends React.Component<Props> {
             ADD
           </button>
         </div>
+        <div>
+          <span className="saga-count">{this.props.state.sagaCount}</span>
+          <button
+            className="saga-sample"
+            onClick={() => this.props.actions.sagaSample()}
+          >
+            ADD
+          </button>
+          ※redux-saga sample
+        </div>
       </Div>
     )
   }
@@ -29,5 +39,4 @@ export class Child extends React.Component<Props> {
 const Div = styled.div`
   color: white;
   background-color: blue;
-  letter-spacing: 5px;
 `
