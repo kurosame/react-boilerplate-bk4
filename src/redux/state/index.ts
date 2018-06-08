@@ -1,5 +1,5 @@
-import { State as Counter } from '@/redux/state/counter'
+import { IState as Counter } from '@/redux/state/counter'
 
-export type ReduxStates = {
+export interface IReduxStates {
   counter: Counter
 }

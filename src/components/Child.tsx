@@ -1,15 +1,15 @@
+import { IActions } from '@/redux/actions/counter'
+import { IState } from '@/redux/state/counter'
 import React from 'react'
-import { State } from '@/redux/state/counter'
-import { Actions } from '@/redux/actions/counter'
 import styled from 'styled-components'
 
-interface Props {
-  state: State
-  actions: Actions
+interface IProps {
+  state: IState
+  actions: IActions
 }
 
-export class Child extends React.Component<Props> {
-  render() {
+export class Child extends React.Component<IProps> {
+  public render() {
     return (
       <Div>
         <div>

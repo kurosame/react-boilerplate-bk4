@@ -1,7 +1,7 @@
-import { createActions, ActionFunctionAny, Action } from 'redux-actions'
 import { ADD_VALUE, SAGA_SAMPLE } from '@/redux/types'
+import { Action, ActionFunctionAny, createActions } from 'redux-actions'
 
-export type Actions = {
+export interface IActions {
   addValue: ActionFunctionAny<Action<{}>>
   sagaSample: ActionFunctionAny<Action<{ sagaCount: number }>>
 }

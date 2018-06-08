@@ -1,7 +1,7 @@
-import { put, take, call, fork } from 'redux-saga/effects'
-import axios from 'axios'
-import { SAGA_SAMPLE } from '@/redux/types'
 import { sagaSample } from '@/redux/actions/counter'
+import { SAGA_SAMPLE } from '@/redux/types'
+import axios from 'axios'
+import { call, fork, put, take } from 'redux-saga/effects'
 
 function* getSagaSample() {
   while (true) {

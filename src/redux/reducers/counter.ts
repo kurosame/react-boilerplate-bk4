@@ -1,18 +1,18 @@
-import { handleActions, Action, Reducer } from 'redux-actions'
-import { State } from '@/redux/state/counter'
+import { IState } from '@/redux/state/counter'
 import { ADD_VALUE, SAGA_SAMPLE } from '@/redux/types'
+import { Action, handleActions, Reducer } from 'redux-actions'
 
-const initialState: State = {
+const initialState: IState = {
   count: 0,
   sagaCount: 0
 }
 
-export const counter: Reducer<State, State> = handleActions(
+export const counter: Reducer<IState, IState> = handleActions(
   {
-    [ADD_VALUE]: (state: State): State => {
+    [ADD_VALUE]: (state: IState): IState => {
       return { ...state, count: state.count + 1 }
     },
-    [SAGA_SAMPLE]: (state: State, action: Action<State>): State => {
+    [SAGA_SAMPLE]: (state: IState, action: Action<IState>): IState => {
       return {
         ...state,
         sagaCount:
