@@ -1,5 +1,5 @@
-import { counter } from '@/redux/reducers/counter'
-import rootSaga from '@/redux/sagas/counter'
+import { counter } from '@/modules/counter'
+import rootSaga from '@/sagas/counter'
 import {
   applyMiddleware,
   combineReducers,

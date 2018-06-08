@@ -1,5 +1,4 @@
-import { IActions } from '@/redux/actions/counter'
-import { IState } from '@/redux/state/counter'
+import { IActions, IState } from '@/modules/counter'
 import React from 'react'
 import styled from 'styled-components'
 

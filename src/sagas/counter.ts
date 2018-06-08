@@ -1,5 +1,4 @@
-import { sagaSample } from '@/redux/actions/counter'
-import { SAGA_SAMPLE } from '@/redux/types'
+import { SAGA_SAMPLE, sagaSample } from '@/modules/counter'
 import axios from 'axios'
 import { call, fork, put, take } from 'redux-saga/effects'
 

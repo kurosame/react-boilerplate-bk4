@@ -1,5 +1,5 @@
 import Parent from '@/containers/Parent'
-import store from '@/redux/store'
+import store from '@/store'
 import 'normalize.css/normalize.css'
 import React from 'react'
 import { render } from 'react-dom'
