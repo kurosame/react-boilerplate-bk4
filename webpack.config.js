@@ -45,6 +45,9 @@ module.exports = (_, argv) => ({
             options: {
               typeCheck: true
             }
+          },
+          {
+            loader: 'stylelint-custom-processor-loader'
           }
         ],
         exclude: /node_modules/
