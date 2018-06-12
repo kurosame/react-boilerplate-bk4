@@ -14,8 +14,8 @@ export class Child extends React.Component<IProps> {
         <div>
           <span className="count">{this.props.state.count}</span>
           <button
-            className="add-value"
-            onClick={() => this.props.actions.addValue()}
+            className="add-count"
+            onClick={() => this.props.actions.addCount()}
           >
             ADD
           </button>
@@ -23,8 +23,8 @@ export class Child extends React.Component<IProps> {
         <div>
           <span className="saga-count">{this.props.state.sagaCount}</span>
           <button
-            className="saga-sample"
-            onClick={() => this.props.actions.sagaSample()}
+            className="add-saga-count"
+            onClick={() => this.props.actions.getSagaCount()}
           >
             ADD
           </button>

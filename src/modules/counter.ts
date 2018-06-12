@@ -7,12 +7,14 @@ import {
 } from 'redux-actions'
 
 // Action types
-const ADD_VALUE = 'ADD_VALUE'
-export const SAGA_SAMPLE = 'SAGA_SAMPLE'
+const ADD_COUNT = 'ADD_COUNT'
+const ADD_SAGA_COUNT = 'ADD_SAGA_COUNT'
+export const GET_SAGA_COUNT = 'GET_SAGA_COUNT'
 
 export interface IActions {
-  addValue: ActionFunctionAny<Action<{}>>
-  sagaSample: ActionFunctionAny<Action<{ sagaCount: number }>>
+  addCount: ActionFunctionAny<Action<{}>>
+  addSagaCount: ActionFunctionAny<Action<{ sagaCount: number }>>
+  getSagaCount: ActionFunctionAny<Action<{}>>
 }
 
 export interface IState {
@@ -25,14 +27,18 @@ const initialState: IState = {
   sagaCount: 0
 }
 
-export const { addValue, sagaSample } = createActions(ADD_VALUE, SAGA_SAMPLE)
+export const { addCount, addSagaCount, getSagaCount } = createActions(
+  ADD_COUNT,
+  ADD_SAGA_COUNT,
+  GET_SAGA_COUNT
+)
 
 export const counter: Reducer<IState, IState> = handleActions(
   {
-    [ADD_VALUE]: (state: IState): IState => {
+    [ADD_COUNT]: (state: IState): IState => {
       return { ...state, count: state.count + 1 }
     },
-    [SAGA_SAMPLE]: (state: IState, action: Action<IState>): IState => {
+    [ADD_SAGA_COUNT]: (state: IState, action: Action<IState>): IState => {
       return {
         ...state,
         sagaCount:

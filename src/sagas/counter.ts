@@ -1,20 +1,20 @@
-import { SAGA_SAMPLE, sagaSample } from '@/modules/counter'
+import { addSagaCount, GET_SAGA_COUNT } from '@/modules/counter'
 import axios from 'axios'
 import { call, fork, put, take } from 'redux-saga/effects'
 
-function* getSagaSample() {
+function* getSagaCount() {
   while (true) {
-    yield take(SAGA_SAMPLE)
+    yield take(GET_SAGA_COUNT)
     const sagaCount: number = yield call(() =>
       axios
         .get('/api')
         .then(res => res.data.sagaCount)
-        .catch(() => console.error('SAGA_SAMPLE API response error'))
+        .catch(() => console.error('GET_SAGA_COUNT API response error'))
     )
-    yield put(sagaSample({ sagaCount }))
+    yield put(addSagaCount({ sagaCount }))
   }
 }
 
 export default function* rootSaga() {
-  yield fork(getSagaSample)
+  yield fork(getSagaCount)
 }
