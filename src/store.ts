@@ -1,5 +1,5 @@
 import { counter } from '@/modules/counter'
-import rootSaga from '@/sagas/counter'
+import rootSaga from '@/sagas/index'
 import {
   applyMiddleware,
   combineReducers,

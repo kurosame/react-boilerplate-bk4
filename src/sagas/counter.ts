@@ -1,8 +1,8 @@
 import { addSagaCount, GET_SAGA_COUNT } from '@/modules/counter'
 import axios from 'axios'
-import { call, fork, put, take } from 'redux-saga/effects'
+import { call, put, take } from 'redux-saga/effects'
 
-function* getSagaCount() {
+export function* getSagaCount() {
   while (true) {
     yield take(GET_SAGA_COUNT)
     const sagaCount: number = yield call(() =>
@@ -13,8 +13,4 @@ function* getSagaCount() {
     )
     yield put(addSagaCount({ sagaCount }))
   }
-}
-
-export default function* rootSaga() {
-  yield fork(getSagaCount)
 }
