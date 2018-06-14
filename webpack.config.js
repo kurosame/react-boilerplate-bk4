@@ -14,6 +14,12 @@ module.exports = (_, argv) => ({
     path: path.join(__dirname, 'dist'),
     publicPath: '/'
   },
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      chunks: 'initial'
+    }
+  },
   devServer: {
     contentBase: 'dist',
     historyApiFallback: true,
