@@ -1,10 +1,10 @@
-import { IActions, IState } from '@/modules/counter'
+import { ICounterActions, ICounterState } from '@/modules/counter'
 import React from 'react'
 import styled from 'styled-components'
 
 interface IProps {
-  state: IState
-  actions: IActions
+  state: ICounterState
+  actions: ICounterActions
 }
 
 export class Child extends React.Component<IProps> {
