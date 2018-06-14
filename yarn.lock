@@ -83,8 +83,8 @@
     to-fast-properties "^2.0.0"
 
 "@kurosame/tslint-config-react@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kurosame/tslint-config-react/-/tslint-config-react-1.0.0.tgz#89af359080b9fdb36dc20d062b961860120f8091"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@kurosame/tslint-config-react/-/tslint-config-react-1.1.0.tgz#259993772099861cc6cc72f2424043f8ba11b23c"
   dependencies:
     prettier "^1.13.2"
     tslint "^5.10.0"
@@ -5017,8 +5017,8 @@ preserve@^0.2.0:
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
 prettier@^1.13.2:
-  version "1.13.4"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.13.4.tgz#31bbae6990f13b1093187c731766a14036fa72e6"
+  version "1.13.5"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.13.5.tgz#7ae2076998c8edce79d63834e9b7b09fead6bfd0"
 
 prettier@^1.5.3:
   version "1.12.1"
