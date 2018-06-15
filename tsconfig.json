@@ -19,6 +19,6 @@
     },
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "test/unit/specs/**/*.spec.ts"],
   "exclude": ["node_modules"]
 }

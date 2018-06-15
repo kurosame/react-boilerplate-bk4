@@ -7,8 +7,8 @@ import {
 } from 'redux-actions'
 
 // Action types
-const ADD_COUNT = 'ADD_COUNT'
-const ADD_SAGA_COUNT = 'ADD_SAGA_COUNT'
+export const ADD_COUNT = 'ADD_COUNT'
+export const ADD_SAGA_COUNT = 'ADD_SAGA_COUNT'
 export const GET_SAGA_COUNT = 'GET_SAGA_COUNT'
 
 export interface ICounterActions {
