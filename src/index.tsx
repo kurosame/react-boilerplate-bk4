@@ -1,3 +1,4 @@
+import Header from '@/containers/common/Header'
 import Parent from '@/containers/Parent'
 import store from '@/store'
 import React from 'react'
@@ -7,9 +8,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 render(
   <Provider store={store}>
-    <Router>
-      <Route path="/" component={Parent} exact />
-    </Router>
+    <>
+      <Header />
+      <Router>
+        <Route path="/" component={Parent} exact />
+      </Router>
+    </>
   </Provider>,
   document.getElementById('root') as HTMLElement
 )

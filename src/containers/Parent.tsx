@@ -1,4 +1,4 @@
-import { Child } from '@/components/Child'
+import Child from '@/components/Child'
 import { addCount, getSagaCount } from '@/modules/counter'
 import { IActions, IStates } from '@/modules/index'
 import React from 'react'
@@ -11,7 +11,7 @@ interface IProps {
   actions: IActions
 }
 
-export class Parent extends React.Component<IProps> {
+class Parent extends React.Component<IProps> {
   public render() {
     return (
       <Div>

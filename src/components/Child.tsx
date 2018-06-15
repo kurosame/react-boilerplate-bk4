@@ -7,7 +7,7 @@ interface IProps {
   actions: ICounterActions
 }
 
-export class Child extends React.Component<IProps> {
+export default class Child extends React.Component<IProps> {
   public render() {
     return (
       <Div>
