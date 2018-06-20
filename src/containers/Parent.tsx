@@ -31,12 +31,12 @@ const Div = styled.div`
 `
 
 export default connect(
-  (s: IStates) => ({ states: s }),
-  (d: Dispatch) => ({
+  (states: IStates) => ({ states }),
+  (dispatch: Dispatch) => ({
     actions: {
       counter: {
-        addCount: bindActionCreators(addCount, d),
-        getSagaCount: bindActionCreators(getSagaCount, d)
+        addCount: bindActionCreators(addCount, dispatch),
+        getSagaCount: bindActionCreators(getSagaCount, dispatch)
       }
     }
   })
