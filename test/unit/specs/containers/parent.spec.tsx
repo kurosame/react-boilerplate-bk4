@@ -10,5 +10,6 @@ const wrapper = shallow(<Parent />, {
 })
 
 test('Match the snapshot', () => {
+  // TODO: https://github.com/kurosame/react-boilerplate/issues/1
   expect(wrapper.html()).toMatchSnapshot()
 })

@@ -23,8 +23,6 @@ module.exports = (_, argv) => ({
   devServer: {
     contentBase: 'dist',
     historyApiFallback: true,
-    open: true,
-    port: 8000,
     before(app) {
       apiMocker(app, path.join(__dirname, 'mock.js'), {
         proxy: {
