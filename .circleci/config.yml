@@ -3,7 +3,6 @@ references:
     setup-docker: &setup-docker
       docker:
         - image: kurosame/node
-      working_directory: ~/react-boilerplate
 
 version: 2
 jobs:
@@ -47,6 +46,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - store_artifacts:
+          path: ./test/unit/coverage
   e2e:
     <<: *setup-docker
     steps:
@@ -67,6 +68,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - store_artifacts:
+          path: ./test/e2e/specs/__screenshots__
 
 workflows:
   version: 2
