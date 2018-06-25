@@ -1,9 +1,9 @@
+import { Reducer } from 'redux'
 import {
   Action,
   ActionFunctionAny,
   createActions,
-  handleActions,
-  Reducer
+  handleActions
 } from 'redux-actions'
 
 // Action types
@@ -33,7 +33,7 @@ export const { addCount, addSagaCount, getSagaCount } = createActions(
   GET_SAGA_COUNT
 )
 
-export const counter: Reducer<ICounterState, ICounterState> = handleActions(
+export const counter: Reducer = handleActions(
   {
     [ADD_COUNT]: (state: ICounterState): ICounterState => {
       return { ...state, count: state.count + 1 }

@@ -1,4 +1,5 @@
 import { counter } from '@/modules/counter'
+import { IStates } from '@/modules/index'
 import rootSaga from '@/sagas/index'
 import {
   applyMiddleware,
@@ -16,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default createStore(
-  combineReducers<any>({ counter }),
+  combineReducers<IStates>({ counter }),
   applyMiddleware(...middlewares)
 )
 
