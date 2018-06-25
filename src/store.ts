@@ -5,21 +5,20 @@ import {
   applyMiddleware,
   combineReducers,
   createStore,
-  Middleware
+  StoreEnhancer
 } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import logger from 'redux-logger'
 import saga from 'redux-saga'
 
 const sagaMiddleware = saga()
-const middlewares: Middleware[] = [sagaMiddleware]
-if (process.env.NODE_ENV !== 'production') {
-  middlewares.push(logger)
+let enhancer: StoreEnhancer
+if (process.env.NODE_ENV === 'production') {
+  enhancer = applyMiddleware(sagaMiddleware)
+} else {
+  enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
 }
 
-export default createStore(
-  combineReducers<IStates>({ counter }),
-  composeWithDevTools(applyMiddleware(...middlewares))
-)
+export default createStore(combineReducers<IStates>({ counter }), enhancer)
 
 sagaMiddleware.run(rootSaga)
