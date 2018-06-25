@@ -7,6 +7,7 @@ import {
   createStore,
   Middleware
 } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import logger from 'redux-logger'
 import saga from 'redux-saga'
 
@@ -18,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 export default createStore(
   combineReducers<IStates>({ counter }),
-  applyMiddleware(...middlewares)
+  composeWithDevTools(applyMiddleware(...middlewares))
 )
 
 sagaMiddleware.run(rootSaga)
