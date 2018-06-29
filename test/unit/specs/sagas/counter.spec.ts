@@ -24,13 +24,13 @@ describe('Run the getApiSagaCount', () => {
     expect(await getApiSagaCount()).toEqual({ sagaCount: 2 })
   })
 
-  test('Return the error', async () => {
+  test('Return the err', async () => {
     moxios.stubRequest('/api', {
       status: 400
     })
 
     const res: { [key: string]: Error } = await getApiSagaCount()
-    expect(res.error).toBeInstanceOf(Error)
+    expect(res.err).toBeInstanceOf(Error)
   })
 })
 
@@ -56,7 +56,7 @@ describe('Run the getSagaCount', () => {
     expect(console.error).not.toBeCalled()
   })
 
-  test('Not call the put when rejected', () => {
+  test('Output the console.error when rejected', () => {
     const saga = getSagaCount()
 
     let res = saga.next()

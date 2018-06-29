@@ -10,18 +10,6 @@ describe('Run when ActionType is ADD_COUNT', () => {
 })
 
 describe('Run when ActionType is ADD_SAGA_COUNT', () => {
-  test('Set the state.sagaCount when payload is nothing', () => {
-    expect(
-      counter(
-        { count: 1, sagaCount: 2 },
-        { type: ADD_SAGA_COUNT, payload: undefined }
-      )
-    ).toEqual({
-      count: 1,
-      sagaCount: 2
-    })
-  })
-
   test('Set the state.sagaCount when payload exists', () => {
     expect(
       counter(
@@ -31,6 +19,18 @@ describe('Run when ActionType is ADD_SAGA_COUNT', () => {
     ).toEqual({
       count: 1,
       sagaCount: 4
+    })
+  })
+
+  test('Set the state.sagaCount when payload is nothing', () => {
+    expect(
+      counter(
+        { count: 1, sagaCount: 2 },
+        { type: ADD_SAGA_COUNT, payload: undefined }
+      )
+    ).toEqual({
+      count: 1,
+      sagaCount: 2
     })
   })
 })

@@ -9,19 +9,18 @@ export function getApiSagaCount() {
       return { sagaCount: res.data.sagaCount }
     })
     .catch(err => {
-      return { error: err }
+      return { err }
     })
 }
 
 export function* getSagaCount() {
   while (true) {
     yield take(GET_SAGA_COUNT)
-    const {
-      sagaCount,
-      error
-    }: { sagaCount: number; error: Error } = yield call(getApiSagaCount)
+    const { sagaCount, err }: { sagaCount: number; err: Error } = yield call(
+      getApiSagaCount
+    )
 
-    if (sagaCount && error === undefined) {
+    if (sagaCount && err === undefined) {
       yield put(addSagaCount({ sagaCount }))
     } else {
       console.error('GET_SAGA_COUNT API response error')
