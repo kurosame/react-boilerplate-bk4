@@ -12,18 +12,18 @@ export default class Child extends React.Component<IProps> {
     return (
       <Div>
         <div>
-          <span className="count">{this.props.state.count}</span>
+          <span data-test="count">{this.props.state.count}</span>
           <button
-            className="add-count"
+            data-test="add-count"
             onClick={() => this.props.actions.addCount()}
           >
             ADD
           </button>
         </div>
         <div>
-          <span className="saga-count">{this.props.state.sagaCount}</span>
+          <span data-test="saga-count">{this.props.state.sagaCount}</span>
           <button
-            className="add-saga-count"
+            data-test="add-saga-count"
             onClick={() => this.props.actions.getSagaCount()}
           >
             ADD

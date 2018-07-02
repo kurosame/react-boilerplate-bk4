@@ -25,19 +25,21 @@ beforeEach(async () => {
   await page.goto('http://localhost:9000')
 })
 
-test('Click the button.add-count, update the count', async () => {
-  await page.click('.add-count')
+test('Click the add-count, update the count', async () => {
+  await page.click('[data-test="add-count"]')
 
   await page.screenshot({
     path: path.join(__dirname, '__screenshots__', 'add-count.png'),
     fullPage: true
   })
 
-  expect(await page.$eval('.count', v => v.textContent)).toEqual('1')
+  expect(await page.$eval('[data-test="count"]', v => v.textContent)).toEqual(
+    '1'
+  )
 })
 
 test('Click the button.add-saga-count, update the sagaCount', async () => {
-  await page.click('.add-saga-count')
+  await page.click('[data-test="add-saga-count"]')
   await page.waitFor(1000)
 
   await page.screenshot({
@@ -45,5 +47,7 @@ test('Click the button.add-saga-count, update the sagaCount', async () => {
     fullPage: true
   })
 
-  expect(await page.$eval('.saga-count', v => v.textContent)).toEqual('2')
+  expect(
+    await page.$eval('[data-test="saga-count"]', v => v.textContent)
+  ).toEqual('2')
 })
