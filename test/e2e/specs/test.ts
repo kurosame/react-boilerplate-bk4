@@ -25,29 +25,38 @@ beforeEach(async () => {
   await page.goto('http://localhost:9000')
 })
 
+test('Initial display', async () => {
+  await page.screenshot({
+    path: path.join(__dirname, '__screenshots__', 'initial-display.png'),
+    fullPage: true
+  })
+})
+
 test('Click the add-count, update the count', async () => {
+  await page.waitForSelector('[data-test="add-count"]')
   await page.click('[data-test="add-count"]')
+
+  expect(await page.$eval('[data-test="count"]', v => v.textContent)).toEqual(
+    '1'
+  )
 
   await page.screenshot({
     path: path.join(__dirname, '__screenshots__', 'add-count.png'),
     fullPage: true
   })
-
-  expect(await page.$eval('[data-test="count"]', v => v.textContent)).toEqual(
-    '1'
-  )
 })
 
 test('Click the button.add-saga-count, update the sagaCount', async () => {
+  await page.waitForSelector('[data-test="add-saga-count"]')
   await page.click('[data-test="add-saga-count"]')
   await page.waitFor(1000)
+
+  expect(
+    await page.$eval('[data-test="saga-count"]', v => v.textContent)
+  ).toEqual('2')
 
   await page.screenshot({
     path: path.join(__dirname, '__screenshots__', 'add-saga-count.png'),
     fullPage: true
   })
-
-  expect(
-    await page.$eval('[data-test="saga-count"]', v => v.textContent)
-  ).toEqual('2')
 })
