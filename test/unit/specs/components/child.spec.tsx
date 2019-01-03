@@ -1,15 +1,24 @@
-import Child from '@/components/Child'
+import ConnectToChild, { Child } from '@/components/Child'
+import { ICounterState } from '@/modules/counter'
+import { IStates } from '@/modules/states'
 import { mount } from 'enzyme'
 import React from 'react'
+import configureStore from 'redux-mock-store'
 
-const state = { count: 147, sagaCount: 258 }
-const actions = {
+const state: ICounterState = { count: 147, sagaCount: 258 }
+const states: IStates = { counter: state }
+const actions: any = {
   addCount: jest.fn(),
-  addSagaCount: jest.fn(),
   getSagaCount: jest.fn()
 }
 
-const wrapper = mount(<Child state={state} actions={actions} />)
+const wrapper = mount(Child({ state, actions }))
+
+const connectToWrapper = mount(<ConnectToChild />, {
+  context: {
+    store: configureStore()(states)
+  }
+})
 
 test('Data binding from the props.count to count', () => {
   expect(wrapper.find('[data-test="count"]').text()).toEqual('147')
@@ -38,5 +47,5 @@ test('Click the add-saga-count will call the getSagaCount', () => {
 })
 
 test('Match the snapshot', () => {
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(connectToWrapper.html()).toMatchSnapshot()
 })

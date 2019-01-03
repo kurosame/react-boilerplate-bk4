@@ -1,5 +1,5 @@
 import { counter } from '@/modules/counter'
-import { IStates } from '@/modules/index'
+import { IStates } from '@/modules/states'
 import rootSaga from '@/sagas/index'
 import {
   applyMiddleware,

@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Match the snapshot 1`] = `"<div class=\\"sc-bwzfXH kFKloX\\">Parent<div class=\\"sc-bdVaJa fQaGEY\\"><div><span data-test=\\"count\\">1</span><button data-test=\\"add-count\\">ADD</button></div><div><span data-test=\\"saga-count\\">2</span><button data-test=\\"add-saga-count\\">ADD</button>※redux-saga sample</div></div></div>"`;
+exports[`Match the snapshot 1`] = `
+"<styled.div>
+  Parent
+  <Connect(Component) />
+</styled.div>"
+`;

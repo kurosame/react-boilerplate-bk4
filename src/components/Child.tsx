@@ -1,5 +1,13 @@
-import { ICounterActions, ICounterState } from '@/modules/counter'
+import {
+  addCount,
+  getSagaCount,
+  ICounterActions,
+  ICounterState
+} from '@/modules/counter'
+import { IStates } from '@/modules/states'
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators, Dispatch } from 'redux'
 import styled from 'styled-components'
 
 interface IProps {
@@ -7,35 +15,38 @@ interface IProps {
   actions: ICounterActions
 }
 
-export default class Child extends React.Component<IProps> {
-  public render() {
-    return (
-      <Div>
-        <div>
-          <span data-test="count">{this.props.state.count}</span>
-          <button
-            data-test="add-count"
-            onClick={() => this.props.actions.addCount()}
-          >
-            ADD
-          </button>
-        </div>
-        <div>
-          <span data-test="saga-count">{this.props.state.sagaCount}</span>
-          <button
-            data-test="add-saga-count"
-            onClick={() => this.props.actions.getSagaCount()}
-          >
-            ADD
-          </button>
-          ※redux-saga sample
-        </div>
-      </Div>
-    )
-  }
-}
+export const Child = (props: IProps) => (
+  <Div>
+    <div>
+      <span data-test="count">{props.state.count}</span>
+      <button data-test="add-count" onClick={() => props.actions.addCount()}>
+        ADD
+      </button>
+    </div>
+    <div>
+      <span data-test="saga-count">{props.state.sagaCount}</span>
+      <button
+        data-test="add-saga-count"
+        onClick={() => props.actions.getSagaCount()}
+      >
+        ADD
+      </button>
+      ※redux-saga sample
+    </div>
+  </Div>
+)
 
 const Div = styled.div`
   color: white;
   background-color: blue;
 `
+
+export default connect(
+  (states: IStates) => ({ state: states.counter }),
+  (dispatch: Dispatch) => ({
+    actions: {
+      addCount: bindActionCreators(addCount, dispatch),
+      getSagaCount: bindActionCreators(getSagaCount, dispatch)
+    }
+  })
+)(Child)
