@@ -5,8 +5,10 @@ import { mount } from 'enzyme'
 import React from 'react'
 import configureStore from 'redux-mock-store'
 
-const state: ICounterState = { count: 147, sagaCount: 258 }
-const states: IStates = { counter: state }
+const state: { counter: ICounterState } = {
+  counter: { count: 147, sagaCount: 258 }
+}
+const states: IStates = { counter: state.counter }
 const actions: any = {
   addCount: jest.fn(),
   getSagaCount: jest.fn()
