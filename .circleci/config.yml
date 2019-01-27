@@ -69,7 +69,7 @@ jobs:
             {
               "attachments": [
                 {
-                  "pretext": "react-boilerplate's outdated",
+                  "pretext": "react-boilerplate's Outdated",
                   "text": '$(yarn outdated --json | $(yarn bin)/format-yarn-outdated)',
                   "mrkdwn_in": ["text"]
                 }
