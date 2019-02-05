@@ -1,5 +1,5 @@
 const path = require('path')
-const apiMocker = require('webpack-api-mocker')
+const apiMocker = require('mocker-api')
 const Copy = require('copy-webpack-plugin')
 const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
 const HardSource = require('hard-source-webpack-plugin')
