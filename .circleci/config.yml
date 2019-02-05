@@ -18,14 +18,14 @@ jobs:
       - run:
           name: Install
           command: yarn install
-      - run:
-          name: Test for CI
-          command: yarn test:ci
       - save_cache:
           name: Cache dependencies
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Test for CI
+          command: yarn test:ci
       - store_artifacts:
           path: ./test/unit/coverage
   e2e:
@@ -40,14 +40,14 @@ jobs:
       - run:
           name: Install
           command: yarn install
-      - run:
-          name: E2E Test for CI
-          command: yarn e2e:ci
       - save_cache:
           name: Cache dependencies
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: E2E Test for CI
+          command: yarn e2e:ci
       - store_artifacts:
           path: ./test/e2e/specs/__screenshots__
   outdated:
@@ -62,6 +62,11 @@ jobs:
       - run:
           name: Install
           command: yarn install
+      - save_cache:
+          name: Cache dependencies
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Outdated
           command: |
