@@ -12,7 +12,7 @@ import styled from 'styled-components'
 
 interface IProps {
   state: { counter: ICounterState }
-  actions: ICounterActions
+  actions: Pick<ICounterActions, 'addCount' | 'getSagaCount'>
 }
 
 export const Child = (props: IProps) => (

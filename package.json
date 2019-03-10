@@ -43,7 +43,7 @@
     "@kurosame/stylelint-config-react": "^1.0.0",
     "@kurosame/tslint-config-react": "^1.0.0",
     "@types/enzyme": "^3.9.0",
-    "@types/enzyme-adapter-react-16": "^1.0.2",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^23.1.0",
     "@types/moxios": "^0.4.8",
     "@types/react": "^16.3.14",
