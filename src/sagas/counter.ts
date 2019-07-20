@@ -5,12 +5,8 @@ import { call, put, take } from 'redux-saga/effects'
 export function getApiSagaCount() {
   return axios
     .get('/api')
-    .then(res => {
-      return { sagaCount: res.data.sagaCount }
-    })
-    .catch(err => {
-      return { err }
-    })
+    .then(res => ({ sagaCount: res.data.sagaCount }))
+    .catch(err => ({ err }))
 }
 
 export function* getSagaCount() {

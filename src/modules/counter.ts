@@ -33,7 +33,10 @@ export const { addCount, addSagaCount, getSagaCount } = createActions(
   GET_SAGA_COUNT
 )
 
-export const counter: Reducer = handleActions(
+export const counter: Reducer<
+  ICounterState,
+  Action<ICounterState>
+> = handleActions(
   {
     [ADD_COUNT]: (state: ICounterState): ICounterState => {
       return { ...state, count: state.count + 1 }
@@ -44,8 +47,7 @@ export const counter: Reducer = handleActions(
     ): ICounterState => {
       return {
         ...state,
-        sagaCount:
-          state.sagaCount + (action.payload ? action.payload.sagaCount : 0)
+        sagaCount: state.sagaCount + action.payload.sagaCount
       }
     }
   },
