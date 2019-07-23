@@ -1,5 +1,6 @@
 import Header from '@/containers/common/Header'
 import Parent from '@/containers/Parent'
+import '@/modules/states'
 import store from '@/store'
 import React from 'react'
 import { render } from 'react-dom'
