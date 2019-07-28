@@ -8,6 +8,7 @@ import { IStates } from '@/modules/states'
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
+import { Action } from 'redux-actions'
 import styled from 'styled-components'
 
 interface IProps {
@@ -45,8 +46,14 @@ export default connect(
   (states: IStates) => ({ state: { counter: states.counter } }),
   (dispatch: Dispatch) => ({
     actions: {
-      addCount: bindActionCreators(addCount, dispatch),
-      getSagaCount: bindActionCreators(getSagaCount, dispatch)
+      addCount: bindActionCreators<Action<ICounterState>, typeof addCount>(
+        addCount,
+        dispatch
+      ),
+      getSagaCount: bindActionCreators<
+        Action<ICounterState>,
+        typeof getSagaCount
+      >(getSagaCount, dispatch)
     }
   })
-)(Child)
+)(React.memo(Child))

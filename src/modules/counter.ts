@@ -12,9 +12,9 @@ export const ADD_SAGA_COUNT = 'ADD_SAGA_COUNT'
 export const GET_SAGA_COUNT = 'GET_SAGA_COUNT'
 
 export interface ICounterActions {
-  addCount: ActionFunctionAny<Action<{}>>
-  addSagaCount: ActionFunctionAny<Action<{ sagaCount: number }>>
-  getSagaCount: ActionFunctionAny<Action<{}>>
+  addCount: ActionFunctionAny<Action<ICounterState>>
+  addSagaCount: ActionFunctionAny<Action<ICounterState>>
+  getSagaCount: ActionFunctionAny<Action<ICounterState>>
 }
 
 export interface ICounterState {
@@ -27,11 +27,9 @@ const initialState: ICounterState = {
   sagaCount: 0
 }
 
-export const { addCount, addSagaCount, getSagaCount } = createActions(
-  ADD_COUNT,
-  ADD_SAGA_COUNT,
-  GET_SAGA_COUNT
-)
+export const { addCount, addSagaCount, getSagaCount } = createActions<
+  ICounterState
+>(ADD_COUNT, ADD_SAGA_COUNT, GET_SAGA_COUNT)
 
 export const counter: Reducer<
   ICounterState,
