@@ -1,26 +1,29 @@
-import {
-  addCount,
-  getSagaCount,
-  ICounterActions,
-  ICounterState
-} from '@/modules/counter'
-import { IStates } from '@/modules/states'
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import { Action } from 'redux-actions'
 import styled from 'styled-components'
+import {
+  addCount,
+  getSagaCount,
+  CounterActions,
+  CounterState
+} from '@/modules/counter'
+import { States } from '@/modules/states'
 
-interface IProps {
-  state: { counter: ICounterState }
-  actions: Pick<ICounterActions, 'addCount' | 'getSagaCount'>
+interface Props {
+  state: { counter: CounterState }
+  actions: Pick<CounterActions, 'addCount' | 'getSagaCount'>
 }
 
-export const Child = (props: IProps) => (
+export const Child = (props: Props): JSX.Element => (
   <Div>
     <div>
       <span data-test="count">{props.state.counter.count}</span>
-      <button data-test="add-count" onClick={() => props.actions.addCount()}>
+      <button
+        data-test="add-count"
+        onClick={(): Action<CounterState> => props.actions.addCount()}
+      >
         ADD
       </button>
     </div>
@@ -28,7 +31,7 @@ export const Child = (props: IProps) => (
       <span data-test="saga-count">{props.state.counter.sagaCount}</span>
       <button
         data-test="add-saga-count"
-        onClick={() => props.actions.getSagaCount()}
+        onClick={(): Action<CounterState> => props.actions.getSagaCount()}
       >
         ADD
       </button>
@@ -43,15 +46,15 @@ const Div = styled.div`
 `
 
 export default connect(
-  (states: IStates) => ({ state: { counter: states.counter } }),
+  (states: States) => ({ state: { counter: states.counter } }),
   (dispatch: Dispatch) => ({
     actions: {
-      addCount: bindActionCreators<Action<ICounterState>, typeof addCount>(
+      addCount: bindActionCreators<Action<CounterState>, typeof addCount>(
         addCount,
         dispatch
       ),
       getSagaCount: bindActionCreators<
-        Action<ICounterState>,
+        Action<CounterState>,
         typeof getSagaCount
       >(getSagaCount, dispatch)
     }

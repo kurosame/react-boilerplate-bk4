@@ -1,5 +1,5 @@
-import { ICounterState } from '@/modules/counter'
+import { CounterState } from '@/modules/counter'
 
-export interface IStates {
-  counter: ICounterState
+export interface States {
+  counter: CounterState
 }

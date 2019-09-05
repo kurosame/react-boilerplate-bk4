@@ -1,5 +1,6 @@
 import { ADD_SAGA_COUNT, GET_SAGA_COUNT } from '@/modules/counter'
 import { getApiSagaCount, getSagaCount } from '@/sagas/counter'
+import { AxiosError } from 'axios'
 import moxios from 'moxios'
 import { call, put, take } from 'redux-saga/effects'
 
@@ -29,7 +30,9 @@ describe('Run the getApiSagaCount', () => {
       status: 400
     })
 
-    const res: { [key: string]: Error } = await getApiSagaCount()
+    const res: { err: AxiosError } = (await getApiSagaCount()) as {
+      err: AxiosError
+    }
     expect(res.err).toBeInstanceOf(Error)
   })
 })

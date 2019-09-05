@@ -1,14 +1,14 @@
 import ConnectToChild, { Child } from '@/components/Child'
-import { ICounterState } from '@/modules/counter'
-import { IStates } from '@/modules/states'
+import { CounterState } from '@/modules/counter'
+import { States } from '@/modules/states'
 import { mount } from 'enzyme'
 import React from 'react'
 import configureStore from 'redux-mock-store'
 
-const state: { counter: ICounterState } = {
+const state: { counter: CounterState } = {
   counter: { count: 147, sagaCount: 258 }
 }
-const states: IStates = { counter: state.counter }
+const states: States = { counter: state.counter }
 const actions: any = {
   addCount: jest.fn(),
   getSagaCount: jest.fn()

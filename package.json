@@ -40,7 +40,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.1.2",
-    "@kurosame/eslint-config-react": "^1.0.2",
+    "@kurosame/eslint-config-react": "^1.0.5",
     "@kurosame/stylelint-config-react": "^1.0.0",
     "@types/enzyme": "^3.9.0",
     "@types/enzyme-adapter-react-16": "^1.0.5",

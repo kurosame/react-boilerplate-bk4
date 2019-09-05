@@ -1,8 +1,8 @@
-import Child from '@/components/Child'
 import React from 'react'
 import styled from 'styled-components'
+import Child from '@/components/Child'
 
-const Parent = () => (
+const Parent = (): JSX.Element => (
   <Div>
     Parent
     <Child />

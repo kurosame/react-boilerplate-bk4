@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Header = () => <Div>Header</Div>
+const Header = (): JSX.Element => <Div>Header</Div>
 
 const Div = styled.div`
   color: white;
