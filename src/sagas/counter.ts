@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import { Action } from 'redux-actions'
 import {
   call,
@@ -10,14 +10,14 @@ import {
 } from 'redux-saga/effects'
 import { addSagaCount, GET_SAGA_COUNT, CounterState } from '@/modules/counter'
 
-export function getApiSagaCount(): Promise<{
-  sagaCount?: number
-  err?: AxiosError
-}> {
+export function getApiSagaCount(): Promise<number> {
   return axios
     .get('/api')
-    .then(res => ({ sagaCount: res.data.sagaCount }))
-    .catch(err => ({ err }))
+    .then(res => res.data.sagaCount)
+    .catch(() => {
+      console.error('GET_SAGA_COUNT API response error')
+      return 0
+    })
 }
 
 export function* getSagaCount(): IterableIterator<
@@ -25,15 +25,6 @@ export function* getSagaCount(): IterableIterator<
 > {
   while (true) {
     yield take(GET_SAGA_COUNT)
-    const {
-      sagaCount,
-      err
-    }: { sagaCount?: number; err?: AxiosError } = yield call(getApiSagaCount)
-
-    if (sagaCount && err === undefined) {
-      yield put(addSagaCount({ sagaCount }))
-    } else {
-      console.error('GET_SAGA_COUNT API response error')
-    }
+    yield put(addSagaCount({ sagaCount: yield call(getApiSagaCount) }))
   }
 }
