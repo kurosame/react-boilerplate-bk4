@@ -28,7 +28,7 @@ export function* getSagaCount(): IterableIterator<
     const {
       sagaCount,
       err
-    }: { sagaCount: number; err: AxiosError } = yield call(getApiSagaCount)
+    }: { sagaCount?: number; err?: AxiosError } = yield call(getApiSagaCount)
 
     if (sagaCount && err === undefined) {
       yield put(addSagaCount({ sagaCount }))
