@@ -10,9 +10,10 @@ import {
 } from 'redux-saga/effects'
 import { addSagaCount, GET_SAGA_COUNT, CounterState } from '@/modules/counter'
 
-export function getApiSagaCount(): Promise<
-  { sagaCount: number } | { err: AxiosError }
-> {
+export function getApiSagaCount(): Promise<{
+  sagaCount?: number
+  err?: AxiosError
+}> {
   return axios
     .get('/api')
     .then(res => ({ sagaCount: res.data.sagaCount }))
@@ -24,9 +25,10 @@ export function* getSagaCount(): IterableIterator<
 > {
   while (true) {
     yield take(GET_SAGA_COUNT)
-    const { sagaCount, err }: { sagaCount: number; err: Error } = yield call(
-      getApiSagaCount
-    )
+    const {
+      sagaCount,
+      err
+    }: { sagaCount: number; err: AxiosError } = yield call(getApiSagaCount)
 
     if (sagaCount && err === undefined) {
       yield put(addSagaCount({ sagaCount }))

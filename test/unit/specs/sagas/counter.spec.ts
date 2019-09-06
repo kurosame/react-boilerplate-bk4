@@ -30,9 +30,10 @@ describe('Run the getApiSagaCount', () => {
       status: 400
     })
 
-    const res: { err: AxiosError } = (await getApiSagaCount()) as {
-      err: AxiosError
-    }
+    const res: {
+      sagaCount?: number
+      err?: AxiosError
+    } = await getApiSagaCount()
     expect(res.err).toBeInstanceOf(Error)
   })
 })
