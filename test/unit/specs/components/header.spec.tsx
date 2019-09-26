@@ -1,4 +1,4 @@
-import Header from '@/containers/common/Header'
+import Header from '@/components/globals/Header'
 import { mount } from 'enzyme'
 import React from 'react'
 

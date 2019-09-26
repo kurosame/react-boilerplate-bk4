@@ -1,4 +1,4 @@
-import Parent from '@/containers/Parent'
+import Parent from '@/pages/Parent'
 import { shallow } from 'enzyme'
 import React from 'react'
 

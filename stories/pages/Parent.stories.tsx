@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { storiesOf } from '@storybook/react'
-import Parent from '@/containers/Parent'
+import Parent from '@/pages/Parent'
 import store from '@/store'
 
 storiesOf('Parent', module)
