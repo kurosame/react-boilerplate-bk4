@@ -16,11 +16,9 @@ const actions: any = {
 
 const wrapper = mount(Child({ state, actions }))
 
-const connectToWrapper = mount(<ConnectToChild />, {
-  context: {
-    store: configureStore()(states)
-  }
-})
+const connectToWrapper = mount(
+  <ConnectToChild store={configureStore<States>()(states)} />
+)
 
 test('Data binding from the props.count to count', () => {
   expect(wrapper.find('[data-test="count"]').text()).toEqual('147')

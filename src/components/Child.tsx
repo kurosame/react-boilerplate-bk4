@@ -14,6 +14,7 @@ import { States } from '@/modules/states'
 interface Props {
   state: { counter: CounterState }
   actions: Pick<CounterActions, 'addCount' | 'getSagaCount'>
+  store?: unknown
 }
 
 export const Child = (props: Props): JSX.Element => (
